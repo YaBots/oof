@@ -2080,9 +2080,20 @@ function library:Prompt(name,text,callback)
         ZIndex = 11
     })
 
+    local outlineholder = utility.create("Square",{
+        Filled = true,
+        Thickness = 0,
+        Theme = "Window Background",
+        Size = UDim2.new(1, 0, 0, 10),
+        Position = utility.getcenter(sizeX,sizeY),
+        Visible = true,
+        Parnet = square,
+        ZIndex = 12
+    })
+
     self.Promptobject = square
 
-    utility.dragify(square, square)
+    utility.dragify(square, outlineholder)
 
     local box = utility.create("Square",{
         Filled = true,
