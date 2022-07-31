@@ -2033,11 +2033,11 @@ function library:Notification(speed, time, text)
 
     local animation = Tween.new(square, TweenInfo.new(speed, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0, 1580, 0, 850)})
     table.insert(animstarted,animation)
-    animation:Play()
-
     for _, obj in pairs(animstarted) do
         if obj ~= animation then
             obj:Cancel()
+        else
+            animation:Play()
         end
     end
 
