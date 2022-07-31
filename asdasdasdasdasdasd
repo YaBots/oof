@@ -2045,6 +2045,7 @@ function library:Notification(speed, time, text)
             local animation2 = Tween.new(square, TweenInfo.new(speed, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0, square.AbsolutePosition.X + 370, 0, square.AbsolutePosition.Y)})
             animation2:Play()
             animation2.Completed:Connect(function()
+                notifs[square] = nil
                 square:Remove()
             end)
         end)
