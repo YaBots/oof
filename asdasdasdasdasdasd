@@ -1986,7 +1986,7 @@ function library.createdropdown(holder, content, flag, callback, default, max, s
     return dropdowntypes
 end
 
-local notifs = {}
+local notifs = utility.table({}, true)
 
 function library:Notification(speed, time, text)
     local square = utility.create("Square",{
