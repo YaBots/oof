@@ -2011,7 +2011,7 @@ function library:Notification(speed, time, text)
     local valuetext = utility.create("Text", {
         Font = Drawing.Fonts.Plex,
         Size = 13,
-        Position = UDim2.new(0, 0, 0, 10),
+        Position = UDim2.new(0, 3, 0, 12),
         Theme = "Text",
         Text = text,
         ZIndex = 3,
