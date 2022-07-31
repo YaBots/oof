@@ -2021,7 +2021,7 @@ function library:Notification(speed, time, text)
         Parent = box
     })
     table.insert(notifs,square)
-    for _, obj in next, notifs do
+    for _, obj in pairs(notifs) do
         if obj ~= nil then
             if obj ~= square then
                 obj.Position = UDim2.new(0, 1580, 0, obj.AbsolutePosition.Y - 55)
