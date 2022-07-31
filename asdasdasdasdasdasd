@@ -1995,7 +1995,7 @@ function library:Notification(speed, time, text)
         Thickness = 0,
         Theme = "Window Background",
         Size = UDim2.new(0, 325, 0, 50),
-        Position = UDim2.new(0, 1950, 0, 850),
+        Position = UDim2.new(0, 1580, 0, 850),
         Visible = true,
         ZIndex = 1
     })
