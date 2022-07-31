@@ -2002,7 +2002,7 @@ function library:Notification(speed, time)
         Thickness = 0,
         Theme = "Tab Background",
         Size = UDim2.new(0, 315, 0, 40),
-        Position = UDim2.new(0, 10, 0, 10),
+        Position = UDim2.new(0, 5, 0, 5),
         Visible = true,
         Parent = square,
         ZIndex = 2
