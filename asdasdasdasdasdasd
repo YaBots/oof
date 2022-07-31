@@ -2002,13 +2002,15 @@ function library:Notification(speed, time)
     local animation = Tween.new(square, TweenInfo.new(speed, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0, 1580, 0, 850)})
     animation:Play()
 
-    wait(time)
-
-    local animation2 = Tween.new(square, TweenInfo.new(speed, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0, 1950, 0, 850)})
-    animation2:Play()
-    animation2.Completed:Connect(function()
-        square:Remove()
-    end)
+    coroutine.wrap(function()
+        wait(4)
+        
+        local animation2 = Tween.new(square, TweenInfo.new(speed, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0, 1950, 0, 850)})
+        animation2:Play()
+        animation2.Completed:Connect(function()
+            square:Remove()
+        end)
+    end)()
 end
 
 function library.createslider(min, max, parent, text, default, float, flag, callback)
