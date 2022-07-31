@@ -2028,7 +2028,7 @@ function library:Notification(speed, time, text)
     local outline = utility.outline(square, "Accent")
 
     utility.outline(outline, "Object Border")
-    
+
     for _, obj in pairs(notifs) do
         if obj ~= square then
             obj.Position = UDim2.new(0, obj.AbsolutePosition.X, 0, obj.AbsolutePosition.Y - 55)
@@ -2037,6 +2037,8 @@ function library:Notification(speed, time, text)
 
     local animation = Tween.new(square, TweenInfo.new(speed, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0, 1580, 0, 850)})
     animation:Play()
+
+    animation:Cancel()
 
     coroutine.wrap(function()
         pcall(function()
