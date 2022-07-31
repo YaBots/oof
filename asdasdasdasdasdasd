@@ -2074,7 +2074,7 @@ function library:Prompt(name,text,callback)
         Filled = true,
         Thickness = 0,
         Theme = "Window Background",
-        Size = UDim2.new(0, 325, 0, 65),
+        Size = UDim2.new(0, 325, 0, 75),
         Position = utility.getcenter(sizeX,sizeY),
         Visible = true,
         ZIndex = 11
@@ -2091,7 +2091,7 @@ function library:Prompt(name,text,callback)
     })
 
     utility.create("Square", {
-        Size = UDim2.new(0, sizeX, 0, sizeY),
+        Size = UDim2.new(0, 325, 0, 75),
         Filled = false,
         Thickness = 2,
         Parent = dragoutline,
@@ -2107,7 +2107,7 @@ function library:Prompt(name,text,callback)
         Filled = true,
         Thickness = 0,
         Theme = "Tab Background",
-        Size = UDim2.new(0, 315, 0, 55),
+        Size = UDim2.new(0, 315, 0, 65),
         Position = UDim2.new(0, 5, 0, 5),
         Visible = true,
         Parent = square,
