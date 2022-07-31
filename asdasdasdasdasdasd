@@ -1987,6 +1987,7 @@ function library.createdropdown(holder, content, flag, callback, default, max, s
 end
 
 local notifs = utility.table({}, true)
+local animstarted = utility.table({}, true)
 local notifout = false
 
 function library:Notification(speed, time, text)
@@ -2029,16 +2030,21 @@ function library:Notification(speed, time, text)
 
     utility.outline(outline, "Object Border")
 
+
+    local animation = Tween.new(square, TweenInfo.new(speed, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0, 1580, 0, 850)})
+    table.insert(animstarted,animation)
+    animation:Play()
+
     for _, obj in pairs(notifs) do
         if obj ~= square then
             obj.Position = UDim2.new(0, obj.AbsolutePosition.X, 0, obj.AbsolutePosition.Y - 55)
         end
     end
-
-    local animation = Tween.new(square, TweenInfo.new(speed, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0, 1580, 0, 850)})
-    animation:Play()
-
-    animation:Cancel()
+    for _, obj in pairs(animstarted) do
+        if obj ~= animation then
+            obj:Cancel()
+        end
+    end
 
     coroutine.wrap(function()
         pcall(function()
@@ -2047,6 +2053,7 @@ function library:Notification(speed, time, text)
             local animation2 = Tween.new(square, TweenInfo.new(speed, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0, square.AbsolutePosition.X + 370, 0, square.AbsolutePosition.Y)})
             animation2:Play()
             animation2.Completed:Connect(function()
+                table.remove(animstarted,1)
                 table.remove(notifs, 1)
                 square:Remove()
             end)
