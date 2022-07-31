@@ -1409,6 +1409,14 @@ function library:Unload()
        self.watermarkobject:Remove() 
     end
 
+    if self.Promptobject then
+        self.Promptobject:Remove()
+    end
+
+    if self.notifobject then
+        self.notifobject:Remove()
+    end
+
     for _, connection in next, self.connections do
         connection:Disconnect()
     end
@@ -2000,6 +2008,8 @@ function library:Notification(speed, time, text)
         ZIndex = 1
     })
 
+    self.notifobject = square
+
     local box = utility.create("Square",{
         Filled = true,
         Thickness = 0,
@@ -2070,11 +2080,13 @@ function library:Prompt(name,text,callback)
         ZIndex = 11
     })
 
+    self.Promptobject = square
+
     local box = utility.create("Square",{
         Filled = true,
         Thickness = 0,
         Theme = "Tab Background",
-        Size = UDim2.new(0, 315, 0, 55),
+        Size = UDim2.new(0, 315, 0, 40),
         Position = UDim2.new(0, 5, 0, 5),
         Visible = true,
         Parent = square,
@@ -2102,6 +2114,12 @@ function library:Prompt(name,text,callback)
         Outline = true,
         Parent = box
     })
+
+    utility.outline(box, "Section Border")
+
+    local outline = utility.outline(square, "Accent")
+
+    utility.outline(outline, "Object Border")
 end
 
 function library.createslider(min, max, parent, text, default, float, flag, callback)
