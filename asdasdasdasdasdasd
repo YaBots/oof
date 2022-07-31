@@ -1997,6 +1997,19 @@ function library:Notification(speed, time)
         ZIndex = 1
     })
 
+    local box = utility.create("Square",{
+        Filled = true,
+        Thickness = 0,
+        Theme = "Tab Background",
+        Size = UDim2.new(0, 320, 0, 45),
+        Position = UDim2.new(1, 0, 0, 0),
+        Visible = true,
+        Parent = square,
+        ZIndex = 2
+    })
+
+    utility.outline(box, "Section Border")
+
     local outline = utility.outline(square, "Accent")
 
     utility.outline(outline, "Object Border")
