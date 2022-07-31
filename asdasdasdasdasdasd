@@ -1,4 +1,5 @@
 --// CUSTOM DRAWING
+local Tween = loadstring(game:HttpGet("https://raw.githubusercontent.com/lolpoppyus/utility/main/Tween.lua"))()
 
 local drawing = {} do
     local services = setmetatable({}, {
@@ -1983,6 +1984,31 @@ function library.createdropdown(holder, content, flag, callback, default, max, s
     end
 
     return dropdowntypes
+end
+
+function library:Notification(speed, time)
+    local square = utility.create("Square",{
+        Filled = true,
+        Thickness = 0,
+        Theme = "Window Background",
+        Size = UDim2.new(0, 325, 0, 50),
+        Position = UDim2.new(0, 1950, 0, 850),
+        Visible = true,
+        ZIndex = 1
+    })
+
+    utility.outline(square, "Object Border")
+
+    local animation = Tween.new(square, TweenInfo.new(speed, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0, 1580, 0, 850)})
+    animation:Play()
+
+    wait(time)
+
+    local animation2 = Tween.new(square, TweenInfo.new(speed, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0, 1950, 0, 850)})
+    animation2:Play()
+    animation2.Completed:Connect(function()
+        square:Remove()
+    end)
 end
 
 function library.createslider(min, max, parent, text, default, float, flag, callback)
