@@ -2030,11 +2030,9 @@ function library:Notification(speed, time, text)
     utility.outline(outline, "Object Border")
 
     if notifout == false then
-        coroutine.wrap(function()
-            notifout = true
-            wait(speed)
-            notifout = false
-        end)()
+        notifout = true
+        wait(speed)
+        notifout = false
     end
 
     local animation = Tween.new(square, TweenInfo.new(speed, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0, 1580, 0, 850)})
