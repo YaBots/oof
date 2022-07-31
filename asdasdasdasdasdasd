@@ -2035,14 +2035,15 @@ function library:Notification(speed, time, text)
     table.insert(animstarted,animation)
     animation:Play()
 
-    for _, obj in pairs(notifs) do
-        if obj ~= square then
-            obj.Position = UDim2.new(0, obj.AbsolutePosition.X, 0, obj.AbsolutePosition.Y - 55)
-        end
-    end
     for _, obj in pairs(animstarted) do
         if obj ~= animation then
             obj:Cancel()
+        end
+    end
+
+    for _, obj in pairs(notifs) do
+        if obj ~= square then
+            obj.Position = UDim2.new(0, obj.AbsolutePosition.X, 0, obj.AbsolutePosition.Y - 55)
         end
     end
 
