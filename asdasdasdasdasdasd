@@ -2022,7 +2022,7 @@ function library:Notification(speed, time, text)
     })
     for _, obj in next, notifs do
         if obj ~= square then
-            obj.Position = UDim2.new(0, 1580, 0, obj.AbsolutePosition.Y + 25)
+            obj.Position = UDim2.new(0, 1580, 0, obj.AbsolutePosition.Y - 50)
         end
     end
     table.insert(notifs,square)
@@ -2040,10 +2040,9 @@ function library:Notification(speed, time, text)
         pcall(function()
             wait(4)
 
-            local animation2 = Tween.new(square, TweenInfo.new(speed, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0, 1950, 0, 850)})
+            local animation2 = Tween.new(square, TweenInfo.new(speed, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0, square.AbsolutePosition.X + 370, 0, 850)})
             animation2:Play()
             animation2.Completed:Connect(function()
-                notifs[square] = nil
                 square:Remove()
             end)
         end)
