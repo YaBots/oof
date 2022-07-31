@@ -2029,9 +2029,12 @@ function library:Notification(speed, time, text)
 
     utility.outline(outline, "Object Border")
 
+    local posY = square.AbsolutePosition.Y
+
     for _, obj in pairs(notifs) do
         if obj ~= square then
             obj.Position = UDim2.new(0, obj.AbsolutePosition.X, 0, obj.AbsolutePosition.Y - 55)
+            posY = obj.AbsolutePosition.Y - 55
         end
     end
 
@@ -2051,6 +2054,51 @@ function library:Notification(speed, time, text)
 
         end)
     end)()
+end
+
+function library:Prompt(name,text,callback)
+    local square = utility.create("Square",{
+        Filled = true,
+        Thickness = 0,
+        Theme = "Window Background",
+        Size = UDim2.new(0, 325, 0, 55),
+        Position = UDim2.new(0.5, 0, 0.5, 0),
+        Visible = true,
+        ZIndex = 1
+    })
+
+    local box = utility.create("Square",{
+        Filled = true,
+        Thickness = 0,
+        Theme = "Tab Background",
+        Size = UDim2.new(0, 315, 0, 55),
+        Position = UDim2.new(0, 5, 0, 5),
+        Visible = true,
+        Parent = square,
+        ZIndex = 2
+    })
+
+    local nameTex = utility.create("Text", {
+        Font = Drawing.Fonts.Plex,
+        Size = 13,
+        Position = UDim2.new(0, 8, 0, 0),
+        Theme = "Text",
+        Text = name,
+        ZIndex = 3,
+        Outline = true,
+        Parent = box
+    })
+
+    local value = utility.create("Text", {
+        Font = Drawing.Fonts.Plex,
+        Size = 13,
+        Position = UDim2.new(0, 8, 0, 8),
+        Theme = "Text",
+        Text = text,
+        ZIndex = 3,
+        Outline = true,
+        Parent = box
+    })
 end
 
 function library.createslider(min, max, parent, text, default, float, flag, callback)
