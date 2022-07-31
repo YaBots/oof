@@ -1986,7 +1986,7 @@ function library.createdropdown(holder, content, flag, callback, default, max, s
     return dropdowntypes
 end
 
-function library:Notification(speed, time)
+function library:Notification(speed, time, text)
     local square = utility.create("Square",{
         Filled = true,
         Thickness = 0,
@@ -2006,6 +2006,18 @@ function library:Notification(speed, time)
         Visible = true,
         Parent = square,
         ZIndex = 2
+    })
+
+    local valuetext = utility.create("Text", {
+        Font = Drawing.Fonts.Plex,
+        Size = 13,
+        Position = UDim2.new(0, 0, 0, 0),
+        Theme = "Text",
+        Text = text,
+        Center = true,
+        ZIndex = 10,
+        Outline = true,
+        Parent = box
     })
 
     utility.outline(box, "Section Border")
