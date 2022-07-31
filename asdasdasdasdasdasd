@@ -2074,7 +2074,7 @@ function library:Prompt(name,text,callback)
         Filled = true,
         Thickness = 0,
         Theme = "Window Background",
-        Size = UDim2.new(0, 325, 0, 55),
+        Size = UDim2.new(0, 325, 0, 65),
         Position = utility.getcenter(sizeX,sizeY),
         Visible = true,
         ZIndex = 11
@@ -2082,11 +2082,13 @@ function library:Prompt(name,text,callback)
 
     self.Promptobject = square
 
+    utility.dragify(square, square)
+
     local box = utility.create("Square",{
         Filled = true,
         Thickness = 0,
         Theme = "Tab Background",
-        Size = UDim2.new(0, 315, 0, 40),
+        Size = UDim2.new(0, 315, 0, 55),
         Position = UDim2.new(0, 5, 0, 5),
         Visible = true,
         Parent = square,
