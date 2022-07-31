@@ -1986,6 +1986,8 @@ function library.createdropdown(holder, content, flag, callback, default, max, s
     return dropdowntypes
 end
 
+local notifs = {}
+
 function library:Notification(speed, time, text)
     local square = utility.create("Square",{
         Filled = true,
@@ -2018,6 +2020,12 @@ function library:Notification(speed, time, text)
         Outline = true,
         Parent = box
     })
+    for _, obj in next, notifs do
+        if obj == square then
+            obj.Position = UDim2.new(0, 1580, 0, obj.Position.Y + 25)
+        end
+    end
+    table.insert(notifs,square)
 
     utility.outline(box, "Section Border")
 
@@ -2035,6 +2043,7 @@ function library:Notification(speed, time, text)
             local animation2 = Tween.new(square, TweenInfo.new(speed, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0, 1950, 0, 850)})
             animation2:Play()
             animation2.Completed:Connect(function()
+                notifs[square] = nil
                 square:Remove()
             end)
         end)
