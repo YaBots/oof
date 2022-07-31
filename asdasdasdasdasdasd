@@ -2022,7 +2022,7 @@ function library:Notification(speed, time, text)
     })
     for _, obj in next, notifs do
         if obj == square then
-            obj.Position = UDim2.new(0, 1580, 0, obj.Position.Y + 25)
+            obj.Position = UDim2.new(0, 1580, 0, obj.AbsolutePosition.Y + 25)
         end
     end
     table.insert(notifs,square)
