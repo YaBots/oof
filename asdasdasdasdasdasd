@@ -1997,14 +1997,16 @@ function library:Notification(speed, time)
         ZIndex = 1
     })
 
-    utility.outline(square, "Object Border")
+    local outline = utility.outline(square, "Accent")
+
+    utility.outline(outline, "Object Border")
 
     local animation = Tween.new(square, TweenInfo.new(speed, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0, 1580, 0, 850)})
     animation:Play()
 
     coroutine.wrap(function()
         wait(4)
-        
+
         local animation2 = Tween.new(square, TweenInfo.new(speed, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0, 1950, 0, 850)})
         animation2:Play()
         animation2.Completed:Connect(function()
