@@ -2028,21 +2028,15 @@ function library:Notification(speed, time, text)
     local outline = utility.outline(square, "Accent")
 
     utility.outline(outline, "Object Border")
-
-    if notifout == false then
-        notifout = true
-        wait(speed)
-        notifout = false
-    end
-
-    local animation = Tween.new(square, TweenInfo.new(speed, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0, 1580, 0, 850)})
-    animation:Play()
-
+    
     for _, obj in pairs(notifs) do
         if obj ~= square then
             obj.Position = UDim2.new(0, obj.AbsolutePosition.X, 0, obj.AbsolutePosition.Y - 55)
         end
     end
+
+    local animation = Tween.new(square, TweenInfo.new(speed, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0, 1580, 0, 850)})
+    animation:Play()
 
     coroutine.wrap(function()
         pcall(function()
@@ -2051,10 +2045,10 @@ function library:Notification(speed, time, text)
             local animation2 = Tween.new(square, TweenInfo.new(speed, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0, square.AbsolutePosition.X + 370, 0, square.AbsolutePosition.Y)})
             animation2:Play()
             animation2.Completed:Connect(function()
-                table.remove(animstarted,1)
                 table.remove(notifs, 1)
                 square:Remove()
             end)
+
         end)
     end)()
 end
