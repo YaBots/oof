@@ -2080,20 +2080,28 @@ function library:Prompt(name,text,callback)
         ZIndex = 11
     })
 
-    local outlineholder = utility.create("Square",{
-        Filled = true,
-        Thickness = 0,
-        Theme = "Window Background",
-        Size = UDim2.new(1, 0, 0, 10),
-        Position = utility.getcenter(sizeX,sizeY),
-        Visible = true,
-        Parnet = square,
-        ZIndex = 12
+    local dragoutline = utility.create("Square", {
+        Size = UDim2.new(0, 325, 0, 10),
+        Position = utility.getcenter(sizeX, sizeY),
+        Filled = false,
+        Thickness = 1,
+        Theme = "Accent",
+        ZIndex = 1,
+        Visible = false,
+    })
+
+    utility.create("Square", {
+        Size = UDim2.new(0, sizeX, 0, sizeY),
+        Filled = false,
+        Thickness = 2,
+        Parent = dragoutline,
+        ZIndex = 0,
+        Theme = "Window Border",
     })
 
     self.Promptobject = square
 
-    utility.dragify(square, outlineholder)
+    utility.dragify(square, dragoutline)
 
     local box = utility.create("Square",{
         Filled = true,
