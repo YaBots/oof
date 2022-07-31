@@ -2020,6 +2020,7 @@ function library:Notification(speed, time, text)
         Outline = true,
         Parent = box
     })
+    table.insert(notifs,square)
     for _, obj in next, notifs do
         if obj ~= nil then
             if obj ~= square then
@@ -2027,7 +2028,6 @@ function library:Notification(speed, time, text)
             end
         end
     end
-    table.insert(notifs,square)
 
     utility.outline(box, "Section Border")
 
