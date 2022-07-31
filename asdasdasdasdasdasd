@@ -1987,7 +1987,6 @@ function library.createdropdown(holder, content, flag, callback, default, max, s
 end
 
 local notifs = utility.table({}, true)
-local animstarted = utility.table({}, true)
 local notifout = false
 
 function library:Notification(speed, time, text)
@@ -2030,16 +2029,16 @@ function library:Notification(speed, time, text)
 
     utility.outline(outline, "Object Border")
 
+    if notifout == false then
+        coroutine.wrap(function()
+            notifout = true
+            wait(speed)
+            notifout = false
+        end)()
+    end
 
     local animation = Tween.new(square, TweenInfo.new(speed, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0, 1580, 0, 850)})
-    table.insert(animstarted,animation)
-    for _, obj in pairs(animstarted) do
-        if obj ~= animation then
-            obj:Cancel()
-        else
-            animation:Play()
-        end
-    end
+    animation:Play()
 
     for _, obj in pairs(notifs) do
         if obj ~= square then
