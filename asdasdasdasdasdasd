@@ -2057,8 +2057,8 @@ function library:Notification(speed, time, text)
 end
 
 function library:Prompt(name,text,callback)
-    local sizeX = options.sizex or 500
-    local sizeY = options.sizey or 550
+    local sizeX = 500
+    local sizeY = 550
 
     local square = utility.create("Square",{
         Filled = true,
